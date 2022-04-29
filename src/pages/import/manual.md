@@ -12,6 +12,7 @@ Al due all fields in this dialog are optional or prefilled, you will benefit fro
 *\*The wizard might look different on your computer depending on your operating system and desktop theme.*
 
 ### Basics
+
 | Field name | Description | 
 | ----------- | ----------- |
 | Survey name | This will be the name under which you will see your survey in the navigator |
@@ -19,6 +20,7 @@ Al due all fields in this dialog are optional or prefilled, you will benefit fro
 | Most of the survey was | Did you do mainly exploration or re-survey  |
 
 ### Credentials
+
 | Field name | Description |
 | ----------- | ----------- |
 | Explorers | The name(s) of the (original) explorers |
@@ -26,6 +28,7 @@ Al due all fields in this dialog are optional or prefilled, you will benefit fro
 | Cartographer | The name(s) of the person(s) adding the data to **StickMaps** |
 
 ### Details
+
 | Field name | Description |
 | ----------- | ----------- |
 | Tags | Tags are used for searching and grouping, add tags as you see fit it helps you finding specific surveys. |
