@@ -12,7 +12,7 @@ In order to avoid confusion or mis-identifying stations there is a simple rule t
 2) When logging the last station of a line, finish your measurement and write down the number shown just before you turn your Mnemo off.
 3) If when entering data into **StickMaps**, you miss a station, most probably you accidentally removed the last measurement when turning the device off.
 
-If your stick to this strategy, the "(reference) id" of a station will always match the number writing in your wet-notes.
+If your stick to this strategy, **StickMaps** "reference id" will always match the number written in your wet-notes.
 
 ### No direct connection
 Due to technical limitations we are not able to support a direct connection between **StickMaps** and your Mnemo.
@@ -84,6 +84,7 @@ After providing all available data,  Click `Next` to continue the process.
 
 ## Import preferences
 Before reading the data from the file, **StickMaps** requires a few preferences to be defined.
+As you can see, we are importing a pretty big survey that was done during a 6 hour DPV dive.
 ![Mnemo import Preferences](../../images/mnemoImport/page_2.png "Preferences")
 
 
@@ -93,7 +94,7 @@ Before reading the data from the file, **StickMaps** requires a few preferences 
 | When difference is too big, prefill with | Generally you will want to use "Last measurement", as most likely line replacement is the cause of the difference |
 | Altitude correction | Mnemo incorrectly calibrated, offset the depth measurement here. (use a NEGATIVE value for depth) |
 | Menmo unit of measurement | Mnemo dmp files present distances in the units as set within the Mnemo |
-| Select lines to import | Allows you too only import the required line |
+| Select lines to import | Allows you too only import the required line(s), be aware that this will NOT change the reference id of that line. |
 
 ### Verify your data
 After providing your preferences, click `Finish` to start the import.
@@ -124,10 +125,12 @@ previous page (`Average azimuth's when difference is smaller then`) and will giv
 
 1) Use the preset as specified at the previous page (`When difference is too big, prefill with`)
 2) Change the value manually
-3) Use the last measurement
+3) Use the last measurement of the shot
 4) Use the average of both measurements
-5) Use the first measurement
+5) Use the first measurement of the shot
 
+Looking at the screenshot you might understand that this specific line was surveyed on a DPV.
+Expect a correction percentage of about 10 to 15% when surveying a line on a DPV.
 
 | Column name | Description |
 | ----------- | ----------- |
@@ -137,4 +140,21 @@ previous page (`Average azimuth's when difference is smaller then`) and will giv
 | Azimuth LAST | The azimuth of the LAST measurement of the current shot|
 | Azimuth AVG | The average of both azimuths |
 | Azimuth FIRST | The azimuth of the FIRST measurement of the current shot|
+
+### Verify your data
+After you verified your line details and shot-correction, click `Next` to process the next line.
+When all lines are processed, click `Finish`
+
+## Import overview
+![Mnemo import overview](../../images/mnemoImport/page_4.png "Overview")
+
+A quick overview is shown with some information per line.
+Click `Finish` to complete the process.
+
+We advise you to reset the Mnemo after completing your import.
+If you wish, you can backup the exported .dmp file. This way it is easier to match your survey notes to the imported lines within **StickMaps**.
+
+
+
+After clicking `Finish` the Wizard will close and your survey should now be visible within the main navigator (`View -> toggle Navigator` or `Ctrl+Space`)
 
