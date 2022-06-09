@@ -10,7 +10,7 @@
         {{#if base_url}}
         <base href="{{ base_url }}">
         {{/if}}
-        <base href="/">
+        <base href="/docs/stickmaps/">
 
         <!-- Custom HTML head -->
         {{> head}}
@@ -21,28 +21,28 @@
         <meta name="theme-color" content="#ffffff" />
 
         {{#if favicon_svg}}
-        <link rel="icon" href="{{ path_to_root }}favicon.svg">
+        <link rel="icon" href="favicon.svg">
         {{/if}}
         {{#if favicon_png}}
-        <link rel="shortcut icon" href="{{ path_to_root }}favicon.png">
+        <link rel="shortcut icon" href="favicon.png">
         {{/if}}
-        <link rel="stylesheet" href="{{ path_to_root }}css/variables.css">
-        <link rel="stylesheet" href="{{ path_to_root }}css/general.css">
-        <link rel="stylesheet" href="{{ path_to_root }}css/chrome.css">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
         {{#if print_enable}}
-        <link rel="stylesheet" href="{{ path_to_root }}css/print.css" media="print">
+        <link rel="stylesheet" href="css/print.css" media="print">
         {{/if}}
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="{{ path_to_root }}FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
         {{#if copy_fonts}}
-        <link rel="stylesheet" href="{{ path_to_root }}fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
         {{/if}}
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="{{ path_to_root }}highlight.css">
-        <link rel="stylesheet" href="{{ path_to_root }}tomorrow-night.css">
-        <link rel="stylesheet" href="{{ path_to_root }}ayu-highlight.css">
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         {{#each additional_css}}
@@ -57,8 +57,38 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "{{ path_to_root }}";
+            var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "{{ preferred_dark_theme }}" : "{{ default_theme }}";
+
+            function fixLinks(anchors){
+                //Javascript auto-magicly adds or removes hostnames, appends base-hrefs and recovers relative paths.
+                //           in order to do anything with the href, copy it to a string and be prepared for anything.
+                for (var i in anchors){
+                    var href = anchors[i].href;
+                    if(href === undefined){
+                        continue;
+                    }
+                    if(href.indexOf("#") >= 0){
+                        href = href.replace(document.location.origin, '');
+                        href = href.replace('../../', '');
+                        href = href.replace("/docs/stickmaps/", '');
+                        href = document.location + href;
+                        anchors[i].href = href;
+                        continue;
+                    }
+                    if(href.startsWith("http")){
+                        href = href.replace(document.location.origin, '');
+                        href = href.replace('../../', '');
+                        href = href.replace("/docs/stickmaps/", '');
+                        href = "/docs/stickmaps/" + href;
+                        href = href.replace("//", '/');
+                        anchors[i].href = href;
+                        continue;
+                    }
+
+                }
+            }
+
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -102,11 +132,21 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+
             <div class="sidebar-scrollbox">
+                <div id="stickmaps_logo">
+                    <div></div>
+                    <h1 class="no_link">StickMaps v1.0</h1>
+                </div>
                 {{#toc}}{{/toc}}
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
+        <script type="text/javascript">
+            // base-url/site-url is not used in toc
+            fixLinks(document.querySelectorAll('#sidebar a'));
+
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
@@ -139,7 +179,7 @@
 
                     <div class="right-buttons">
                         {{#if print_enable}}
-                        <a href="{{ path_to_root }}print.html" title="Print this book" aria-label="Print this book">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         {{/if}}
@@ -183,17 +223,22 @@
                     <main>
                         {{{ content }}}
                     </main>
+                    <script type="text/javascript">
+                        // every header is wrapped in an a using an invalid href.
+                        fixLinks(document.querySelectorAll('main a.header'));
+                    </script>
+
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         {{#previous}}
-                            <a rel="prev" href="{{ path_to_root }}{{link}}" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="{{link}}" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         {{/previous}}
 
                         {{#next}}
-                            <a rel="next" href="{{ path_to_root }}{{link}}" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="{{link}}" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         {{/next}}
@@ -205,13 +250,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 {{#previous}}
-                    <a rel="prev" href="{{ path_to_root }}{{link}}" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="{{link}}" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 {{/previous}}
 
                 {{#next}}
-                    <a rel="next" href="{{ path_to_root }}{{link}}" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="{{link}}" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 {{/next}}
@@ -270,22 +315,22 @@
         {{/if}}
 
         {{#if playground_js}}
-        <script src="{{ path_to_root }}ace.js" type="text/javascript" charset="utf-8"></script>
-        <script src="{{ path_to_root }}editor.js" type="text/javascript" charset="utf-8"></script>
-        <script src="{{ path_to_root }}mode-rust.js" type="text/javascript" charset="utf-8"></script>
-        <script src="{{ path_to_root }}theme-dawn.js" type="text/javascript" charset="utf-8"></script>
-        <script src="{{ path_to_root }}theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
         {{/if}}
 
         {{#if search_js}}
-        <script src="{{ path_to_root }}elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="{{ path_to_root }}mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="{{ path_to_root }}searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
         {{/if}}
 
-        <script src="{{ path_to_root }}clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="{{ path_to_root }}highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="{{ path_to_root }}book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         {{#each additional_js}}

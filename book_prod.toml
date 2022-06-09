@@ -5,6 +5,7 @@ multilingual = false
 src = "src"
 title = "StickMaps Documentation"
 
+
 [output.html]
 # theme = "my-theme"
 default-theme = "coal"
@@ -18,11 +19,12 @@ no-section-label = false
 # git-repository-url = "https://github.com/rust-lang/mdBook"
 # git-repository-icon = "fa-github"
 # edit-url-template = "https://github.com/rust-lang/mdBook/edit/master/guide/{path}"
-# site-url = "/docs/stickmaps"
-# base-url = "/docs/stickmaps" # Not working for some weird reason.
+site-url = "/docs/stickmaps"
+base-url = "/docs/stickmaps" # Not working for some weird reason.
 cname = "myproject.rs"
 # input-404 = "not-found.md"
 
+
 [output.html.fold]
 enable = true    # whether or not to enable section folding
-level = 4         # the depth to start folding
+level = 1         # the depth to start folding

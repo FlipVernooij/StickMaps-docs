@@ -17,13 +17,14 @@ The order of this list is based on implementation-requirements which might seem 
 
 - ### CRUD functionality on map stations
 
-  A user should be able to create, search, edit and remove any station they want, depending on users action a full map-redraw should be triggered.
+  A user should be able to create, ~~search~~, edit and remove any station they want, depending on users action a full map-redraw should be triggered.
 
   - A user should be able to change any location related data on a station already existing on the map.
   - GPS-based stations should move all non-GPS stations that are connected, making it possible to change/correct the entrance position of a map.
   - Above statement goes for the "edit dialog" option too, changing the lng/lat should move the system as a hole.
   - A user should be able to add a station on an already existing line.
   - ~~A user should be able to remove a station on an already existing line.~~ ***\- Added version 0.42***
+  - Searching will be added in a later milestone.
   
 - ### Import **StickMaps**-file(.stk) files into another **StickMaps** file
 
@@ -42,73 +43,83 @@ The order of this list is based on implementation-requirements which might seem 
   - users should be able to connect to their [Sinapsi](https://www.suex.it/en/sinapsi/).
   - users should be able to import .tml files. [Ariane](https://www.arianesline.com/ariane/)
   - users should be able to import .csv files.
-  - ~~users should be able to connect to their [Mnemo](https://www.arianesline.com/mnemo/) directly.~~ **\- Not possible**
+  - ~~users should be able to connect to their [Mnemo](https://www.arianesline.com/mnemo/) directly.~~ *\- cancelled \-*
   
-  - ### Offline usage
+- ### Offline usage
 
-      Currently, no effort has been put in offline usage and so it is unknown what the current possibilities are.
-      Yet as a user, it happens more often the sometimes that you want to process your survey without having internet available.
+  Currently, no effort has been put in offline usage and so it is unknown what the current possibilities are.
+  Yet as a user, it happens more often the sometimes that you want to process your survey without having internet available.
 
-       - determine the current offline functionalities
-       - ensure users can use all off **StickMaps** functionalities except for map-imagery.
-       - allow users to prepare offline areas in order to make map-imagery available. (within the possibilities provided by ArcGIS)
+  - determine the current offline functionalities
+  - ensure users can use all off **StickMaps** functionalities except for map-imagery.
+  - allow users to prepare offline areas in order to make map-imagery available. (within the possibilities provided by ArcGIS)
 
-  - ### Search functionality navigator
+- ### Search functionality navigator
 
-      In the process of creating a map, a user provides an excessive amount of information. 
-      All of this information should be searchable using a simple text-based keyword search-query.
+  In the process of creating a map, a user provides an excessive amount of information. 
+  All of this information should be searchable using a simple text-based keyword search-query.
 
-      - User should be able to search for stations, lines and survey within the navigator.
-      - Search query should filter navigator data, allowing for multiple results.
-      - ~~User should be able to zoom/center mapview on a specific station from within the navigator~~ ***\- Added version 0.40***
+   - User should be able to search for stations, lines and survey within the navigator.
+   - Search query should filter navigator data, allowing for multiple results.
+   - ~~User should be able to zoom/center mapview on a specific station from within the navigator~~ ***\- Added version 0.40***
+
+- ### Refactor Navigator
+
+  Now that we can search, we will probably want to order and structure our data.
+  We would like the navigator become a dynamic entity allowing for user modifications.
+
+  - User should be able to create "directories" and add pieces of map in there (for exporting/publishing)
+  - Directory structure should be virtual as so a user should be able to switch back and forward between folder view and survey view.
+  - Navigator should allow for sorting and ordering.
+  - More to come
+
+- ### Data visualiser
+
+  Extending existing search functionalities, we should now allow users to visualize their data based on user-provided parameters
+
+  - users should be able to color and/or shape lines/stations based on tags, contacts, dates, depths or any other provided information.
+  - users should be able to create a textual report included total length's, accuracy, possible leads, surveyors and so on.
+
+- ### Further Esri ArcGIS integration
+
+  While **StickMaps** fully integrated the ArcGIS api apart from the map-imagery none of their front-end functionalities 
+  have been fully implemented. 
+
+  - users should be allowed/endorsed to use their own (free) ArcGIS account.
+  - users should be allowed to import their own feature layers from their arcGIS account.
+  - users should be able to export their stick-maps as a arcGIS feature layer.
+  - exported feature-layers should be fully compatible with arcGIS own analytic-tools.
   
-  - ### Data visualiser
+- ### Image overlays
 
-      Extending existing search functionalities, we should now allow users to visualize their data based on user-provided parameters
+  Do you have your own drone images? Do you maybe have a jpeg with a huge cave-system or some other image data you 
+  would like to overlay with your map? This feature will enable you to do so.
 
-       - users should be able to color and/or shape lines/stations based on tags, contacts, dates, depths or any other provided information.
-       - users should be able to create a textual report included total length's, accuracy, possible leads, surveyors and so on.
+  - users should be allowed to drop and scale images on the map.
+  - the images should display between the map and the stick-map symbols.
 
-  - ### Further Esri ArcGIS integration
+- ### Least-squares loop closures
 
-      While **StickMaps** fully integrated the ArcGIS api apart from the map-imagery none of their front-end functionalities 
-      have been fully implemented. 
+  Now that we came so far, we should be able to average inaccuracies using te most proper mathematical-algorithm.
+  While there are multiple options, least-squares is accepted as the best possible solution.
+  There are multiple applications claiming to have implemented this algorithm yet doing so correctly might
+  not be as easy as it sounds.
 
-      - users should be allowed/endorsed to use their own (free) ArcGIS account.
-      - users should be allowed to import their own feature layers from their arcGIS account.
-      - users should be able to export their stick-maps as a arcGIS feature layer.
-      - exported feature-layers should be fully compatible with arcGIS own analytic-tools.
+  - Loop-closures should implement the least-squares algorithm.
+  - After a loop-closure the hole map should be re-generated but redrawn only on request.
   
-  - ### Image overlays
+- ### Release 50k, 100k and 250k and ?500k+? versions of **StickMaps**
 
-      Do you have your own drone images? Do you maybe have a jpeg with a huge cave-system or some other image data you 
-      would like to overlay with your map? This feature will enable you to do so.
+  Start smart, grow big. We have a lot of power under the hood, and we want to bring that to good use.
+  Imagine a single file that holds all caves known to humanity, we are up for the challenge, -are you?
 
-      - users should be allowed to drop and scale images on the map.
-      - the images should display between the map and the stick-map symbols.
-
-  - ### Least-squares loop closures
-
-    Now that we came so far, we should be able to average inaccuracies using te most proper mathematical-algorithm.
-    While there are multiple options, least-squares is accepted as the best possible solution.
-    There are multiple applications claiming to have implemented this algorithm yet doing so correctly might
-    not be as easy as it sounds.
-
-    - Loop-closures should implement the least-squares algorithm.
-    - After a loop-closure the hole map should be re-generated but redrawn only on request.
+  - Research ArcGIS api functionalities related to indexing and path-finding (don't reinvent the wheel)
+  - implement hot/cold logic (in-sight/out-of-sight separation)
+  - implement proper BTree, Hash and GIST indexes
+  - loop-indexing for realtime path-finding
+  - optimize search-speeds
   
-  - ### Release 50k, 100k and 250k and ?500k+? versions of **StickMaps**
+- ### Multi-player version?
 
-      Start smart, grow big. We have a lot of power under the hood, and we want to bring that to good use.
-      Imagine a single file that holds all caves known to humanity, we are up for the challenge, -are you?
-
-      - Research ArcGIS api functionalities related to indexing and path-finding (don't reinvent the wheel)
-      - implement hot/cold logic (in-sight/out-of-sight separation)
-      - implement proper BTree, Hash and GIST indexes
-      - loop-indexing for realtime path-finding
-      - optimize search-speeds
-  
-  - ### Multi-player version?
-
-    Wouldn't it be cool to work with all your dive-buddies on the same map?
+  Wouldn't it be cool to work with all your dive-buddies on the same world map?
     

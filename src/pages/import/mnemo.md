@@ -1,9 +1,9 @@
 # Mnemo import
+Mnemo is a handheld hardware device used for cave-survey.
 
-## Introduction
-### Stations VS Shots
+## Stations VS Shots
 **StickMaps** and Mnemo have a fundamental different perspective on your survey data that you need to be aware of.
-- Your Mnemo measures and stores the line between 2 stations called a shot. A station is just the start or the end of the shot. 
+- Your Mnemo measures and stores the line between 2 stations (called a shot). A station is just either the start or the end of a shot. 
 - **StrickMaps** stores stations and calculates the line between two stations.
 
 In order to avoid confusion or mis-identifying stations there is a simple rule that will help you do so:
@@ -14,15 +14,15 @@ In order to avoid confusion or mis-identifying stations there is a simple rule t
 
 If your stick to this strategy, **StickMaps** "reference id" will always match the number written in your wet-notes.
 
-### No direct connection
-Due to technical limitations we are not able to support a direct connection between **StickMaps** and your Mnemo.
+## No direct connection
+Due to some technical limitations we are not able to support a stable and foolproof connection between **StickMaps** and your Mnemo.
 Instead, **StickMaps** imports the backup file (*.dmp) exported by MnemoBridge.
 
 ## MnemoBridge
 You will need to install MnemoBridge in order to save your data to a .dmp file.
 You can download this for free from the official Mnemo website.
 
-![MnemoBridge](../../images/mnemoImport/mnemoBridge.png "Create backup file")
+![MnemoBridge](images/mnemoImport/mnemoBridge.png "Create backup file")
 1) Click the `Connect` button after your Mnemo is connected to your computer and is turned on.
 2) Wait until your device is connected.
 3) Click `Read` to read the contents of the device.
@@ -49,7 +49,7 @@ If this does not work, please contact the supplier of your Mnemo, we can not hel
 **StickMaps** orders your data by survey and stores the information about your survey for later use.
 Al due all fields in this dialog are optional or prefilled, you will benefit from proving all data available to you.
 
-![Mnemo import wizard](../../images/mnemoImport/page_1.png "Import mnemo file")
+![Mnemo import wizard](images/mnemoImport/page_1.png "Import mnemo file")
 
 *\*The wizard might look different on your computer depending on your operating system and desktop theme.*
 
@@ -63,20 +63,20 @@ Al due all fields in this dialog are optional or prefilled, you will benefit fro
 ### Credentials
 | Field name | Description |
 | ----------- | ----------- |
-| Explorers | The name(s) of the (original) explorers |
-| Surveyors | The name(s) of the person(s) gathering the survey data for this survey |
-| Cartographer | The name(s) of the person(s) adding the data to **StickMaps** |
+| Explorers | The name(s) of the (original) explorers (separated by ",")|
+| Surveyors | The name(s) of the person(s) gathering the survey data for this survey  (separated by ",")|
+| Cartographer | The name(s) of the person(s) adding the data to **StickMaps**  (separated by ",")|
 
 ### Details
 | Field name | Description |
 | ----------- | ----------- |
-| Tags | Tags are used for searching and grouping, add tags as you see fit it helps you finding specific surveys. |
+| Tags | Tags are used for searching and grouping, add tags as you see fit it helps you finding specific surveys. (separated by ",")|
 | Comments | Anything specific about this survey you wish to remember |
 
 ## Verify your data
 After providing all data, the dialog should look something like this:
 
-![Mnemo import wizard](../../images/mnemoImport/page_1_2.png "First page filled")
+![Mnemo import wizard](images/mnemoImport/page_1_2.png "First page filled")
 
 *Note that all the green text-blocks (credentials & tags) will be available for autocomplete on future uses.*
 
@@ -85,7 +85,7 @@ After providing all available data,  Click `Next` to continue the process.
 ## Import preferences
 Before reading the data from the file, **StickMaps** requires a few preferences to be defined.
 As you can see, we are importing a pretty big survey that was done during a 6 hour DPV dive.
-![Mnemo import Preferences](../../images/mnemoImport/page_2.png "Preferences")
+![Mnemo import Preferences](images/mnemoImport/page_2.png "Preferences")
 
 
 | Field name | Description |
@@ -104,7 +104,7 @@ After providing your preferences, click `Finish` to start the import.
 It is important to note that while Mnemo measures shots, **StickMaps** works with stations.
 As a result, you will always have 1 station more than you will have shots.
 
-![Mnemo import Line](../../images/mnemoImport/page_3.png "Verify line")
+![Mnemo import Line](images/mnemoImport/page_3.png "Verify line")
 
 
 ### Line details
@@ -114,9 +114,9 @@ As a result, you will always have 1 station more than you will have shots.
 | This was | Was this line new exploration, re-survey or something else? |
 | Direction | Did you survey on the way IN or on the way OUT? |
 | Altitude correction | Use a NEGATIVE number for depth|
-| Explorers | The name(s) of the (original) explorers |
-| Surveyors | The name(s) of the person(s) gathering the survey data for this line |
-| Tags | Tags are used for searching and grouping, add tags as you see fit it helps you finding specific lines. |
+| Explorers | The name(s) of the (original) explorers  (separated by ",")|
+| Surveyors | The name(s) of the person(s) gathering the survey data for this line  (separated by ",")|
+| Tags | Tags are used for searching and grouping, add tags as you see fit it helps you finding specific lines.  (separated by ",")|
 | Comments | Anything specific about this line you wish to remember |
 
 ### Corrections
@@ -146,7 +146,7 @@ After you verified your line details and shot-correction, click `Next` to proces
 When all lines are processed, click `Finish`
 
 ## Import overview
-![Mnemo import overview](../../images/mnemoImport/page_4.png "Overview")
+![Mnemo import overview](images/mnemoImport/page_4.png "Overview")
 
 A quick overview is shown with some information per line.
 Click `Finish` to complete the process.
