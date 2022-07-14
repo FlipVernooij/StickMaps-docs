@@ -9,6 +9,9 @@ cp -r ./theme_prod ./theme;
 cp ./book_prod.toml ./book.toml
 ## generate the book
 mdbook build --dest-dir ./stickmaps;
+## Fix the print.html file
+echo "# Fix images in print.html";
+sed -i 's/src\=\"pages\/basics\/images/src\=\"images/g' ./stickmaps/print.html
 ## archive the book
 echo "# Archiving book";
 tar -czf ./stickmaps.tgz ./stickmaps;

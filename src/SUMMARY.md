@@ -1,6 +1,6 @@
 # Summary
 - [Introduction](pages/basics/index.md)
-  - [Requirements](pages/basics/requirements.md)
+  - [Versions & Requirements](pages/basics/requirements.md)
   - [Installation](pages/basics/installation.md)
   - [Quick start](pages/basics/quickstart.md)
 - [Data import](pages/import/index.md)

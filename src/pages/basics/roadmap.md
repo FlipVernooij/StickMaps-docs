@@ -29,7 +29,7 @@ The order of this list is based on implementation-requirements which might seem 
 - ### Import **StickMaps**-file(.stk) files into another **StickMaps** file
 
   As a user I will want to be able to import an existing .stk file into my current project. 
-  This would make it possible to create connect multiple previously separate systems together or even create one huge map with all caves in the world.
+  This would make it possible to connect multiple previously separated systems together or even create one huge map with all caves in the world.
 
   - users should be allowed to import one file into another, meaning that they can "merge" two separate stickmaps into a single map.
   - the imported stickmap should exist of exactly the same data as a non-imported stickmap.
@@ -44,22 +44,22 @@ The order of this list is based on implementation-requirements which might seem 
   - users should be able to import .tml files. [Ariane](https://www.arianesline.com/ariane/)
   - users should be able to import .csv files.
   - ~~users should be able to connect to their [Mnemo](https://www.arianesline.com/mnemo/) directly.~~ *\- cancelled \-*
+  - Your file format not here? [Let us know](https://stagedrop.co#contact)
   
 - ### Offline usage
 
-  Currently, no effort has been put in offline usage and so it is unknown what the current possibilities are.
+  Currently, no effort has been put in offline usage and so is impossible to use StickMaps without an internet connection.
   Yet as a user, it happens more often the sometimes that you want to process your survey without having internet available.
 
-  - determine the current offline functionalities
-  - ensure users can use all off **StickMaps** functionalities except for map-imagery.
   - allow users to prepare offline areas in order to make map-imagery available. (within the possibilities provided by ArcGIS)
+  - possibly add a default "offline area" that will always be available offline.
 
 - ### Search functionality navigator
 
   In the process of creating a map, a user provides an excessive amount of information. 
   All of this information should be searchable using a simple text-based keyword search-query.
 
-   - User should be able to search for stations, lines and survey within the navigator.
+   - User should be able to search for stations, lines, surveys and markers within the navigator.
    - Search query should filter navigator data, allowing for multiple results.
    - ~~User should be able to zoom/center mapview on a specific station from within the navigator~~ ***\- Added version 0.40***
 
@@ -86,8 +86,8 @@ The order of this list is based on implementation-requirements which might seem 
   have been fully implemented. 
 
   - users should be allowed/endorsed to use their own (free) ArcGIS account.
-  - users should be allowed to import their own feature layers from their arcGIS account.
-  - users should be able to export their stick-maps as a arcGIS feature layer.
+  - users should be allowed to import their own feature-layers from their arcGIS account.
+  - users should be able to export their stickmaps as a arcGIS feature layer.
   - exported feature-layers should be fully compatible with arcGIS own analytic-tools.
   
 - ### Image overlays
@@ -108,12 +108,11 @@ The order of this list is based on implementation-requirements which might seem 
   - Loop-closures should implement the least-squares algorithm.
   - After a loop-closure the hole map should be re-generated but redrawn only on request.
   
-- ### Release 50k, 100k and 250k and ?500k+? versions of **StickMaps**
+- ### Release 50k and 500k versions of **StickMaps**
 
   Start smart, grow big. We have a lot of power under the hood, and we want to bring that to good use.
-  Imagine a single file that holds all caves known to humanity, we are up for the challenge, -are you?
+  Imagine a single file that holds all caves known to humanity; We are up for the challenge, -are you?
 
-  - Research ArcGIS api functionalities related to indexing and path-finding (don't reinvent the wheel)
   - implement hot/cold logic (in-sight/out-of-sight separation)
   - implement proper BTree, Hash and GIST indexes
   - loop-indexing for realtime path-finding

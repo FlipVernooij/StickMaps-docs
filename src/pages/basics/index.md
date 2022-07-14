@@ -1,4 +1,4 @@
-![StickMaps](images/base.png) "Basic interface")
+![StickMaps](images/base.png "Basic interface")
 # Introduction
 
 **StickMaps** is a program to create stick-maps using compass-based survey data.
