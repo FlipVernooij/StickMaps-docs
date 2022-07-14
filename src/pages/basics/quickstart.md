@@ -97,10 +97,13 @@ So lets close that loop by hovering the station we want to close and `press and 
 ![QuickStart](images/quickstart/screen_15.png)
 
 ## Depth-aware station snap
-If you now `mouse left-click & hold` while moving your mouse, you will see that the line is following you cursor.
-This is our basic loop-close algorithm, when closing the loop it will average the difference over every stations untill either the moving line connects to another line or it ends.
+If you now `mouse left-click & hold` while moving your mouse, you will see that the line is following your cursor.
+This is our basic loop-close algorithm, when closing the loop it will average the difference over every station until either the moving line connects to another station or it ends.
 Now to complete our loop-close, hover a station that is in the same depth-range as the one you are hovering.
 You will see it glow-up meaning you can connect your line at that place.
+
+*\*Be aware that is the difference in depth between to stations is too big, it will *NOT* snap. 
+To change the margin go to `top navigation -> file -> Preferences -> map` and change the `station max altitude difference` to a bigger number.*
 
 ![QuickStart](images/quickstart/screen_16.png)
 
@@ -115,7 +118,7 @@ Accept the dialog and repeat the process for the last station in the line.
 
 ## Mark our jump line
 The loop we created contains a jump. The last 5 stations are actually temporary stations that we created while using our jump-spool.
-Let's visualize this by: `mouse right-click` ouw line in the map-view or within the navigator and chose `edit line`.
+Let's visualize this by: `mouse right-click` on your line in the map-view or within the navigator and chose `edit line`.
 Change the "Stations after line ends" to 5 and click `Save`
 
 ![QuickStart](images/quickstart/screen_19.png)

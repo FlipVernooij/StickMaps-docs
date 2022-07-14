@@ -8,13 +8,17 @@
 }
 
 html {
-    font-family: "Open Sans", sans-serif;
+    /*font-family: "Open Sans", sans-serif;*/
+    font-family: Poppins, Arial, Helvetica, sans-serif;
     color: var(--fg);
     background-color: var(--bg);
     text-size-adjust: none;
     -webkit-text-size-adjust: none;
 }
 
+h1,h2,h3,h4,h5,h6{
+    font-family: "Russo One", Arial, Helvetica, sans-serif;
+}
 body {
     margin: 0;
     font-size: 1.6rem;

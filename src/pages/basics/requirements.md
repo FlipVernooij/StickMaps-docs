@@ -6,7 +6,7 @@ At time of writing, there is only 1 version of StickMaps available to the public
 
 ### - ***StickMaps 5k***
 This version supports up to 5000 unique stations in a single file/map.
-Targeted at regular cave-divers allowing them to plot about 7 days of excessive survey.
+Targeted at regular cave-divers allowing them to plot somewhere between 20 or 30 days of survey per file.
 Enough to create considerably large maps.
 
 #### There is more to come
